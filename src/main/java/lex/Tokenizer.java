@@ -1,8 +1,6 @@
 package lex;
 
 import errors.LexicalError;
-import symbolTable.KeywordTable;
-import symbolTable.SymbolTable;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,12 +12,6 @@ import java.net.URL;
 public class Tokenizer
 {
 	private CharStream stream = null;
-
-	/** The KeywordTable is a SymbolTable that comes with all of the KeywordEntries
-	 *  already inserted.
-	 */
-	private KeywordTable keywordTable;
-	private SymbolTable table;
 
 	public Tokenizer(String filename) throws IOException, LexicalError
 	{
@@ -43,7 +35,7 @@ public class Tokenizer
 	protected void init(CharStream stream)
 	{
 		this.stream = stream;
-		keywordTable = new KeywordTable();
+//		keywordTable = new KeywordTable();
 		// TODO more initialization will be needed...
 	}
 

@@ -1,7 +1,5 @@
 package lex;
 
-import symbolTable.ConstantEntry;
-
 import java.util.StringJoiner;
 
 
@@ -24,7 +22,6 @@ public class Token
 	private TokenType type;
 	private String value;
 	private OperatorType opType;
-	private ConstantEntry entry;
 
 	public Token()
 	{
@@ -111,16 +108,6 @@ public class Token
 			joiner.add(opType.toString());
 		}
 		return joiner.toString();
-	}
-
-	public ConstantEntry getEntry()
-	{
-		return entry;
-	}
-
-	public void setEntry(ConstantEntry entry)
-	{
-		this.entry = entry;
 	}
 
 }
