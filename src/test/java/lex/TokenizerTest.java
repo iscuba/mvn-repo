@@ -178,6 +178,35 @@ public class TokenizerTest
 	}
 
 	@Test
+	public void testKeywords() throws IOException, LexicalError
+	{
+		System.out.println("TokenizerTest.testKeywords");
+		createTokenizerFor("program begin end var function procedure result integer real array of if then else while do not and or div mod");
+		expect(PROGRAM);
+		expect(BEGIN);
+		expect(END);
+		expect(VAR);
+		expect(FUNCTION);
+		expect(PROCEDURE);
+		expect(RESULT);
+		expect(INTEGER);
+		expect(REAL);
+		expect(ARRAY);
+		expect(OF);
+		expect(IF);
+		expect(THEN);
+		expect(ELSE);
+		expect(WHILE);
+		expect(DO);
+		expect(NOT);
+		expect(MULOP);
+		expect(ADDOP);
+		expect(MULOP);
+		expect(MULOP);
+		expect(ENDOFFILE);
+	}
+
+	@Test
 	public void theBigTest() throws IOException, LexicalError
 	{
 		int count = 0;
