@@ -18,7 +18,12 @@ The `<URL>` above is the URL to your private GitHub repository that was created 
 
 ## Maven
 
-Move the settings.xml file to your ~/.m2 directory. You can remove the settings.xml file from your project directory.
+Move the settings.xml file to your ~/.m2 directory. If the .m2/ directory does not exist it means you have not run Maven (mvn) yet. You can either:
+
+- Run `mvn clean` on a Maven project, or
+- Simply create the .m2/ directory.
+
+You can remove the settings.xml file from your project directory.
 
 ## Validate
 
