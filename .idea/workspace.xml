@@ -20,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/lex/Tokenizer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1605">
-              <caret line="248" column="39" lean-forward="true" selection-start-line="248" selection-start-column="39" selection-end-line="248" selection-end-column="39" />
+              <caret line="248" column="39" lean-forward="false" selection-start-line="248" selection-start-column="39" selection-end-line="248" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1165#1166#0" expanded="true" />
@@ -290,12 +290,12 @@
       <updated>1488415414056</updated>
       <workItem from="1488415415793" duration="1008000" />
       <workItem from="1488841135341" duration="1931000" />
-      <workItem from="1488846273195" duration="9587000" />
+      <workItem from="1488846273195" duration="9686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12526000" />
+    <option name="totallyTimeSpent" value="12625000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -475,7 +475,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/lex/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1605">
-          <caret line="248" column="39" lean-forward="true" selection-start-line="248" selection-start-column="39" selection-end-line="248" selection-end-column="39" />
+          <caret line="248" column="39" lean-forward="false" selection-start-line="248" selection-start-column="39" selection-end-line="248" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1165#1166#0" expanded="true" />
