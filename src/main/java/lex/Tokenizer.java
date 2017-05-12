@@ -25,6 +25,8 @@ public class Tokenizer
 	//Length of the longest possible identifier
 	private int MAX_ID_LENGTH;
 	private Token t = new Token();
+	private KeywordTable keywordTable;
+	private SymbolTable table;
 
 	public Tokenizer(String filename) throws IOException, LexicalError
 	{
