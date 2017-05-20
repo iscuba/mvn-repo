@@ -2,6 +2,7 @@ package lex;
 
 
 import errors.LexicalError;
+
 import symbolTable.KeywordTable;
 import symbolTable.SymbolTable;
 import symbolTable.SymbolTableEntry;
@@ -28,6 +29,11 @@ public class Tokenizer
 	private KeywordTable keywordTable;
 	private SymbolTable table;
 
+
+    int testCnt = 0;
+
+
+
 	public Tokenizer(String filename) throws IOException, LexicalError
 	{
 		super();
@@ -51,7 +57,7 @@ public class Tokenizer
 	{
 		this.stream = stream;
 		MAX_ID_LENGTH = 64;
-//		keywordTable = new KeywordTable();
+		keywordTable = new KeywordTable();
 		setLastToken(new Token());
 		// TODO more initialization will be needed...
 	}
@@ -77,16 +83,11 @@ public class Tokenizer
 	{
 		t = new Token();
 
-		lastToken = new Token();
-		lastToken.setType(t.getType());
-		lastToken.setValue(t.getValue());
-
 		while (true) {
 			char seen = stream.currentChar();
 			//if we see a newline op or blank space, go to the next char
 			if ( seen == '\n' || seen == ' '){
 				seen = stream.currentChar();
-
 			}
 			if (Character.isDigit(seen)) {
 				t = readDigit(seen);
@@ -106,7 +107,11 @@ public class Tokenizer
 			} else {
 				readOther(seen);
 			}
-			return t;
+
+            lastToken = new Token();
+            lastToken.setType(t.getType());
+            lastToken.setValue(t.getValue());
+            return t;
 		}
 
 	}
@@ -256,6 +261,12 @@ public class Tokenizer
             }
         }
         stream.pushBack(seen);
+
+        System.out.print("READLETTER TESTING");
+        System.out.println();
+        System.out.print(name.toString());
+        System.out.println();
+
         return whichTokenType(name.toString());
 	}
 
@@ -268,6 +279,8 @@ public class Tokenizer
         SymbolTableEntry s = keywordTable.lookup(upperID);
         if (s != null) {
             switch(upperID) {
+                //add all the op types here. Key Words will already have been inserted through
+                // Symbol table innitialization.
                 case "AND":
                     t.setType(s.getType());
                     t.setOpType(Token.OperatorType.AND);
@@ -278,6 +291,8 @@ public class Tokenizer
                     break;
                 case "NOT":
                     t.setType(s.getType());
+                    // System.out.println("MADE IT TO NOT" + testCnt);
+                    // testCnt++;
                     t.setOpType(Token.OperatorType.NOT);
                     break;
                 case "DIV":
@@ -288,13 +303,27 @@ public class Tokenizer
                     t.setType(s.getType());
                     t.setOpType(Token.OperatorType.MOD);
                     break;
+                    //this is for it its anything other than ^
+                //might have to fix this when I add my KeywordTable
+                // Whay is this running forever??
+                case "PROGRAM":
+                    t.setType(s.getType());
+                    t.setType(TokenType.PROGRAM);
+                    break;
+
+                case "END":
+                    t.setType(TokenType.END);
+                    break;
+
                 default:
+                    // System.out.println("MADE IT TO DEFAULT " + str);
+                    //should never reach here...
                     t.setType(s.getType());
                     break;
             }
 
         } else {
-            // make the identifier (it's not a keyword)
+             //make the identifier (it's not a keyword)
             t.setType(TokenType.IDENTIFIER);
             t.setValue(str);
         }
@@ -318,6 +347,7 @@ public class Tokenizer
                 break;
 
         }
+        return t;
 	}
 
 	private boolean isAddOp(char ch) {
@@ -401,7 +431,7 @@ public class Tokenizer
         return t;
 	}
 
-	private Token readOther(Character seen) {
+	private Token readOther(Character seen) throws LexicalError {
         switch (seen) {
             case '(':
                 t.setType(TokenType.LEFTPAREN);
