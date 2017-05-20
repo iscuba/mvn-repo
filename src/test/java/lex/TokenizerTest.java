@@ -108,7 +108,7 @@ public class TokenizerTest
 	@Test(expected = LexicalError.class)
 	public void testBadComment2() throws IOException, LexicalError
 	{
-		System.out.println("TokenizerTest.testBadComment");
+		System.out.println("TokenizerTest.testBadComment2");
 		createTokenizerFor(" { { ");
 		tokenizer.getNextToken();
 	}
@@ -198,7 +198,7 @@ public class TokenizerTest
 		expect(ELSE);
 		expect(WHILE);
 		expect(DO);
-		expect(NOT); //returing <null> not sure why??
+		expect(NOT);
 		expect(MULOP);
 		expect(ADDOP);
 		expect(MULOP);
@@ -206,7 +206,7 @@ public class TokenizerTest
 		expect(ENDOFFILE);
 	}
 
-	/*@Test
+	@Test
 	public void theBigTest() throws IOException, LexicalError
 	{
 		int count = 0;
@@ -233,7 +233,7 @@ public class TokenizerTest
 			fail(e.getMessage());
 		}
 	}
-*/
+
 	private void expect(int line, TokenType type) throws LexicalError
 	{
 		assertEquals("Wrong line number.", line, tokenizer.getLineNumber());

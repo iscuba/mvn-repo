@@ -131,7 +131,7 @@ public class Tokenizer
         if (seen == '.') {
             char lookahead = stream.currentChar();
             if (Character.isDigit(lookahead)) {
-                numbers.append(Character.toString(lookahead));
+                numbers.append(Character.toString(seen));
                 do {
                     numbers.append(Character.toString(lookahead));
                     lookahead = stream.currentChar();
@@ -262,10 +262,10 @@ public class Tokenizer
         }
         stream.pushBack(seen);
 
-        System.out.print("READLETTER TESTING");
+        /*System.out.print("READLETTER TESTING");
         System.out.println();
         System.out.print(name.toString());
-        System.out.println();
+        System.out.println();*/
 
         return whichTokenType(name.toString());
 	}
